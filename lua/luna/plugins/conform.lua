@@ -33,6 +33,8 @@ local formatters = {
   vue = { "prettier" },
   -- scripting
   sh = { "shfmt" },
+  -- database
+  sql = { "sql_formatter" },
   -- other
   ["*"] = { "trim_whitespace" },
 }

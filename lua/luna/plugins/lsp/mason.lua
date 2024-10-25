@@ -38,6 +38,7 @@ local tools = {
   "latexindent",
   "goimports",
   "shfmt",
+  "sql-formatter",
   -- linters
   -- see nvim-lint plugin
   "markdownlint",
