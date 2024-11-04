@@ -1,5 +1,5 @@
 local function biome_or_prettier()
-  if vim.fn.filereadable ".prettierrc" then
+  if vim.fn.filereadable ".prettierrc" == 1 then
     return { "prettier" }
   else
     return { "biome" }
