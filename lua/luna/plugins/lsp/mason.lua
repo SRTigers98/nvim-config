@@ -45,6 +45,8 @@ local tools = {
   "yamllint",
   "biome",
   "shellcheck",
+  -- other
+  "gomodifytags",
 }
 
 return {
