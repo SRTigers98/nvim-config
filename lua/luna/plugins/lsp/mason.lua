@@ -7,7 +7,7 @@ local lsp_servers = {
   "taplo",
   -- typesetting
   "texlab",
-  "typst_lsp",
+  "tinymist",
   -- programming
   "gopls",
   "zls",
