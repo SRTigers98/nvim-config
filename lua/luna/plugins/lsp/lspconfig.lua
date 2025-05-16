@@ -88,53 +88,52 @@ return {
       },
     }
 
-    mason_lspconfig.setup_handlers {
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-        }
-      end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup {
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
+    -- configure lua server (with special settings)
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
           },
-        }
-      end,
-      ["html"] = function()
-        lspconfig["html"].setup {
-          capabilities = capabilities,
-          filetypes = { "html", "templ", "heex" },
-        }
-      end,
-      ["elixirls"] = function()
-        lspconfig["elixirls"].setup {
-          capabilities = capabilities,
-          cmd = { vim.fn.expand "$HOME/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
-        }
-      end,
-      ["jsonls"] = function()
-        lspconfig["jsonls"].setup {
-          capabilities = capabilities,
-          settings = {
-            json = {
-              schemas = require("schemastore").json.schemas(),
-              validate = { enable = true },
-            },
+          completion = {
+            callSnippet = "Replace",
           },
-        }
-      end,
-    }
+        },
+      },
+    })
+    vim.lsp.config("html", {
+      capabilities = capabilities,
+      filetypes = { "html", "templ", "heex" },
+    })
+    vim.lsp.config("elixirls", {
+      capabilities = capabilities,
+      cmd = { vim.fn.expand "$HOME/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+    })
+    vim.lsp.config("jsonls", {
+      capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    })
+    vim.lsp.config("yamlls", {
+      capabilities = capabilities,
+      settings = {
+        yaml = {
+          schemaStore = {
+            enable = false,
+            url = "",
+          },
+          schemas = require("schemastore").yaml.schemas(),
+        },
+      },
+    })
   end,
 }
