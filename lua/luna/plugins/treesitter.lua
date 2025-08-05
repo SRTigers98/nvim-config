@@ -12,6 +12,7 @@ local languages = {
   "toml",
   "csv",
   "kdl",
+  "regex",
   -- typesetting
   "bibtex",
   "latex",
