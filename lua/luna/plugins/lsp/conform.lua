@@ -1,18 +1,10 @@
-local function biome_or_prettier()
-  if vim.fn.filereadable ".prettierrc" == 1 then
-    return { "prettier" }
-  else
-    return { "biome" }
-  end
-end
-
 local formatters = {
   -- defaults
   lua = { "stylua" },
   -- text
   markdown = { "prettier" },
-  json = biome_or_prettier,
-  jsonc = biome_or_prettier,
+  json = { "biomejs" },
+  jsonc = { "biomejs" },
   toml = { "taplo" },
   yaml = { "prettier" },
   -- typesetting
@@ -21,16 +13,13 @@ local formatters = {
   go = { "gofmt", "goimports" },
   zig = { "zigfmt" },
   elixir = { "mix" },
-  rust = { "rustfmt" },
-  javascript = biome_or_prettier,
-  typescript = biome_or_prettier,
+  javascript = { "biomejs" },
+  typescript = { "biomejs" },
   -- web
   html = { "prettier" },
-  css = biome_or_prettier,
-  javascriptreact = biome_or_prettier,
-  typescriptreact = biome_or_prettier,
-  svelte = { "prettier" },
-  vue = { "prettier" },
+  css = { "biomejs" },
+  javascriptreact = { "biomejs" },
+  typescriptreact = { "biomejs" },
   -- scripting
   sh = { "shfmt" },
   -- database
@@ -53,13 +42,5 @@ return {
         timeout_ms = 1000,
       },
     }
-
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      }
-    end, { desc = "Format file or range (in visual mode)" })
   end,
 }

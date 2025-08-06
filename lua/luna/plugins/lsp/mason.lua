@@ -13,14 +13,10 @@ local lsp_servers = {
   "zls",
   "ts_ls",
   "elixirls",
-  "rust_analyzer",
   -- web
   "html",
-  "htmx",
   "cssls",
-  "svelte",
   -- tools
-  "autotools_ls",
   "dockerls",
   "docker_compose_language_service",
   "biome",
