@@ -11,10 +11,18 @@ which I used previously.
 
 ## Installation
 
-Install the configuration by using the following command:
+Install the configuration by using one of the following commands:
+
+- Via HTTPS
 
 ```bash
-git clone https://github.com/SRTigers98/nvchad-config ~/.config/nvim --depth 1
+git clone https://github.com/SRTigers98/nvim-config ~/.config/nvim --depth 1
+```
+
+- Via SSH
+
+```bash
+git clone git@github.com:SRTigers98/nvim-config.git ~/.config/nvim --depth 1
 ```
 
 Then you can open up NeoVim and all plugins and packages should be installed automatically.
