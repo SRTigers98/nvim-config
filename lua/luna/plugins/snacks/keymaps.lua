@@ -1,3 +1,6 @@
+---@diagnostic disable:undefined-global
+-- Snacks is available on command execution
+
 return {
   -- Explore & Find
   {
@@ -28,6 +31,27 @@ return {
     end,
     desc = "Find Word / Selection",
     mode = { "n", "x" },
+  },
+  {
+    "<leader>fk",
+    function()
+      Snacks.picker.keymaps()
+    end,
+    desc = "Find Keys",
+  },
+  {
+    "<leader>fn",
+    function()
+      Snacks.picker.notifications()
+    end,
+    desc = "Find Notifications",
+  },
+  {
+    "<leader>F",
+    function()
+      Snacks.picker()
+    end,
+    desc = "Find Picker",
   },
   -- LSP
   {
@@ -108,5 +132,20 @@ return {
       Snacks.picker.git_status()
     end,
     desc = "Git Status",
+  },
+  -- Words
+  {
+    "<leader>wn",
+    function()
+      Snacks.words.jump(vim.v.count1)
+    end,
+    desc = "Next Reference",
+  },
+  {
+    "<leader>wp",
+    function()
+      Snacks.words.jump(-vim.v.count1)
+    end,
+    desc = "Previous Reference",
   },
 }

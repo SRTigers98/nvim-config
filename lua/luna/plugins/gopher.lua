@@ -8,7 +8,6 @@ return {
   build = function()
     vim.cmd.GoInstallDeps()
   end,
-  ---@type gopher.Config
   opts = {},
   config = function()
     local map = vim.keymap.set
