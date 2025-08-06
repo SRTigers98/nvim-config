@@ -1,9 +1,9 @@
 return {
   {
-    "andersevenrud/nordic.nvim",
+    "nordtheme/vim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "nordic"
+      vim.cmd.colorscheme "nord"
     end,
   },
 }
