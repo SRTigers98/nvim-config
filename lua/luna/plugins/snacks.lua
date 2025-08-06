@@ -4,7 +4,6 @@ return {
   lazy = false,
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
-    { "echasnovski/mini.nvim", version = "*" },
   },
   opts = {
     dashboard = require "luna.plugins.snacks.dashboard",
