@@ -3,8 +3,8 @@ local formatters = {
   lua = { "stylua" },
   -- text
   markdown = { "prettier" },
-  json = { "biomejs" },
-  jsonc = { "biomejs" },
+  json = { "biome" },
+  jsonc = { "biome" },
   toml = { "taplo" },
   yaml = { "prettier" },
   -- typesetting
@@ -13,13 +13,13 @@ local formatters = {
   go = { "gofmt", "goimports" },
   zig = { "zigfmt" },
   elixir = { "mix" },
-  javascript = { "biomejs" },
-  typescript = { "biomejs" },
+  javascript = { "biome" },
+  typescript = { "biome" },
   -- web
   html = { "prettier" },
-  css = { "biomejs" },
-  javascriptreact = { "biomejs" },
-  typescriptreact = { "biomejs" },
+  css = { "biome" },
+  javascriptreact = { "biome" },
+  typescriptreact = { "biome" },
   -- scripting
   sh = { "shfmt" },
   -- database
