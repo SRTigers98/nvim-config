@@ -8,11 +8,6 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require "lspconfig"
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require "mason-lspconfig"
-    -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
     local keymap = vim.keymap -- for conciseness
@@ -42,14 +37,8 @@ return {
 
         opts.desc = "Show documentation for what is under cursor"
         keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-        opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
       end,
     })
-
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video, migrated to vim.diagnostic.config)
@@ -70,12 +59,14 @@ return {
       },
     }
 
+    -- used to enable autocompletion (assign to every lsp server config)
+    local capabilities = cmp_nvim_lsp.default_capabilities()
+
     vim.lsp.config("*", {
       capabilities = capabilities,
     })
-    -- configure lua server (with special settings)
+
     vim.lsp.config("lua_ls", {
-      capabilities = capabilities,
       settings = {
         Lua = {
           -- make the language server recognize "vim" global
@@ -88,16 +79,16 @@ return {
         },
       },
     })
+
     vim.lsp.config("html", {
-      capabilities = capabilities,
       filetypes = { "html", "templ", "heex" },
     })
+
     vim.lsp.config("elixirls", {
-      capabilities = capabilities,
       cmd = { vim.fn.expand "$HOME/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
     })
+
     vim.lsp.config("jsonls", {
-      capabilities = capabilities,
       settings = {
         json = {
           schemas = require("schemastore").json.schemas(),
@@ -105,8 +96,8 @@ return {
         },
       },
     })
+
     vim.lsp.config("yamlls", {
-      capabilities = capabilities,
       settings = {
         yaml = {
           schemaStore = {
