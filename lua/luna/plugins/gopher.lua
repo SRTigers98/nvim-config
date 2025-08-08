@@ -5,9 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  build = function()
-    vim.cmd.GoInstallDeps()
-  end,
+  build = function() vim.cmd.GoInstallDeps() end,
   opts = {},
   config = function()
     local map = vim.keymap.set

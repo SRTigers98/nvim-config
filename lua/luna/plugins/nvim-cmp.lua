@@ -28,9 +28,7 @@ return {
         completeopt = "menu,menuone,preview,noselect",
       },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
