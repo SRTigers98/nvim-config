@@ -14,6 +14,7 @@ return {
     notifier = { enabled = true },
     picker = require "luna.plugins.snacks.picker",
     quickfile = { enabled = true },
+    terminal = { enabled = true },
     words = { enabled = true },
   },
   keys = require "luna.plugins.snacks.keymaps",

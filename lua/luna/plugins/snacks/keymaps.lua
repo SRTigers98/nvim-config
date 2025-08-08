@@ -29,4 +29,12 @@ return {
   -- Words
   { "<leader>wn", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
   { "<leader>wp", function() Snacks.words.jump(-vim.v.count1) end, desc = "Previous Reference" },
+
+  -- External Terminal Tools
+  {
+    "<leader>rs",
+    function() Snacks.terminal("scooter " .. vim.api.nvim_buf_get_name(0)) end,
+    desc = "Run Scooter in File",
+  },
+  { "<leader>rS", function() Snacks.terminal "scooter" end, desc = "Run Scooter in Workspace" },
 }
