@@ -11,5 +11,6 @@ return {
     local map = vim.keymap.set
     map("n", "<leader>gsj", "<cmd>GoTagAdd json <CR>", { desc = "Go Add JSON struct tags" })
     map("n", "<leader>gsy", "<cmd>GoTagAdd yaml <CR>", { desc = "Go Add YAML struct tags" })
+    map("n", "<leader>gst", "<cmd>GoTagAdd toml <CR>", { desc = "Go Add TOML struct tags" })
   end,
 }
