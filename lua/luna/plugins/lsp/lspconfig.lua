@@ -8,8 +8,6 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
-    local cmp_nvim_lsp = require "cmp_nvim_lsp"
-
     local keymap = vim.keymap -- for conciseness
 
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -60,24 +58,10 @@ return {
     }
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     vim.lsp.config("*", {
       capabilities = capabilities,
-    })
-
-    vim.lsp.config("lua_ls", {
-      settings = {
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
-        },
-      },
     })
 
     vim.lsp.config("html", {
