@@ -36,6 +36,7 @@ local languages = {
   "gosum",
   "make",
   "dockerfile",
+  "hurl",
   -- scripting
   "bash",
   -- vcs
@@ -63,6 +64,7 @@ return {
   config = function()
     -- import nvim-treesitter plugin
     local treesitter = require "nvim-treesitter.configs"
+    local parsers = require "nvim-treesitter.parsers"
 
     -- configure treesitter
     treesitter.setup { -- enable syntax highlighting
@@ -86,5 +88,19 @@ return {
         },
       },
     }
+
+    -- enable folding
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+      callback = function()
+        if parsers.has_parser() then
+          vim.opt.foldmethod = "expr"
+          vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        else
+          vim.opt.foldmethod = "syntax"
+        end
+        vim.opt.foldenable = false
+        vim.opt.foldlevel = 20
+      end,
+    })
   end,
 }
