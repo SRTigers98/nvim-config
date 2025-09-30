@@ -9,6 +9,7 @@ local formatters = {
   yaml = { "prettier" },
   -- typesetting
   tex = { "latexindent" },
+  typst = { "typstyle" },
   -- programming languages
   go = { "gofmt", "goimports" },
   zig = { "zigfmt" },

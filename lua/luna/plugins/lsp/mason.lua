@@ -32,6 +32,7 @@ local tools = {
   "prettier",
   "taplo",
   "latexindent",
+  "typstyle",
   "goimports",
   "shfmt",
   "sql-formatter",
