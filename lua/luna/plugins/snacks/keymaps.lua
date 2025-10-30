@@ -1,6 +1,21 @@
 ---@diagnostic disable:undefined-global
 -- Snacks is available on command execution
 
+local function run_scooter(mode)
+  local base_cmd = "scooter"
+
+  if mode == "file" then
+    local file = vim.api.nvim_buf_get_name(0)
+    Snacks.terminal(base_cmd .. " " .. file)
+  elseif mode == "word" then
+    local file = vim.api.nvim_buf_get_name(0)
+    local selection = vim.fn.expand "<cword>"
+    Snacks.terminal(base_cmd .. " -s '" .. selection .. "' " .. file)
+  elseif mode == "workspace" then
+    Snacks.terminal(base_cmd .. " --hidden")
+  end
+end
+
 return {
   -- Explore & Find
   { "<leader>e", function() Snacks.picker.explorer() end, desc = "File Explorer" },
@@ -32,9 +47,14 @@ return {
 
   -- External Terminal Tools
   {
-    "<leader>rs",
-    function() Snacks.terminal("scooter " .. vim.api.nvim_buf_get_name(0)) end,
+    "<leader>rss",
+    function() run_scooter "file" end,
     desc = "Run Scooter in File",
   },
-  { "<leader>rS", function() Snacks.terminal "scooter" end, desc = "Run Scooter in Workspace" },
+  {
+    "<leader>rsw",
+    function() run_scooter "word" end,
+    desc = "Run Scooter in File with Current Word (star)",
+  },
+  { "<leader>rS", function() run_scooter "workspace" end, desc = "Run Scooter in Workspace" },
 }
