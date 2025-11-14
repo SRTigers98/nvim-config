@@ -17,7 +17,7 @@ local formatters = {
   javascript = { "biome" },
   typescript = { "biome" },
   -- web
-  html = { "prettier" },
+  html = { "biome" },
   css = { "biome" },
   javascriptreact = { "biome" },
   typescriptreact = { "biome" },
