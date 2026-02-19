@@ -20,6 +20,7 @@ return {
   -- Explore & Find
   { "<leader>e", function() Snacks.picker.explorer() end, desc = "File Explorer" },
   { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+  { "<leader>fF", function() Snacks.picker.files { ignored = true } end, desc = "Find All Files" },
   { "<leader>fs", function() Snacks.picker.grep() end, desc = "Find String" },
   { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find Word / Selection", mode = { "n", "x" } },
   { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Find Keys" },
