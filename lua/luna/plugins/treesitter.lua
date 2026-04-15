@@ -56,50 +56,31 @@ local languages = {
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
+  branch = "main",
+  lazy = false,
   build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
   config = function()
-    -- import nvim-treesitter plugin
-    local treesitter = require "nvim-treesitter.configs"
-    local parsers = require "nvim-treesitter.parsers"
+    -- install all desired parsers (async, no-op if already installed)
+    require("nvim-treesitter").install(languages)
 
-    -- configure treesitter
-    treesitter.setup { -- enable syntax highlighting
-      highlight = {
-        enable = true,
-      },
-      -- enable indentation
-      indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-      },
-      ensure_installed = languages,
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-    }
+    -- enable built-in treesitter highlighting per filetype
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(ev) pcall(vim.treesitter.start, ev.buf) end,
+    })
 
-    -- enable folding
-    vim.api.nvim_create_autocmd({ "FileType" }, {
+    -- enable built-in folding and treesitter-based indentation per filetype
+    vim.api.nvim_create_autocmd("FileType", {
       callback = function()
-        if parsers.has_parser() then
-          vim.opt.foldmethod = "expr"
-          vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        local ok = pcall(vim.treesitter.language.add, vim.bo.filetype)
+        if ok then
+          vim.opt_local.foldmethod = "expr"
+          vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.opt_local.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         else
-          vim.opt.foldmethod = "syntax"
+          vim.opt_local.foldmethod = "syntax"
         end
-        vim.opt.foldenable = false
-        vim.opt.foldlevel = 20
+        vim.opt_local.foldenable = false
+        vim.opt_local.foldlevel = 20
       end,
     })
   end,

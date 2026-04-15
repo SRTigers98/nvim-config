@@ -9,6 +9,23 @@ by [Josean Martinez](https://github.com/josean-dev).
 Also some configurations and plugins are inspired by [NvChad](https://nvchad.com/)
 which I used previously.
 
+## Requirements
+
+- **Neovim 0.12+**
+- **[tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)** (≥ 0.26.1) — required by the treesitter plugin to compile language parsers from source.
+
+  Install via pacman (Arch Linux):
+
+  ```bash
+  pacman -S tree-sitter-cli
+  ```
+
+  Install via Homebrew (macOS):
+
+  ```bash
+  brew install tree-sitter-cli
+  ```
+
 ## Installation
 
 Install the configuration by using one of the following commands:
