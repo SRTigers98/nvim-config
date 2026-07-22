@@ -25,6 +25,10 @@ local languages = {
   "typescript",
   "elixir",
   "rust",
+  "java",
+  "kotlin",
+  "c",
+  "cpp",
   -- web
   "html",
   "css",
@@ -39,6 +43,7 @@ local languages = {
   "hurl",
   -- scripting
   "bash",
+  "python",
   -- vcs
   "gitignore",
   "gitattributes",
